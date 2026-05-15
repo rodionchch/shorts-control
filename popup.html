@@ -64,25 +64,8 @@
     }
 
     .logo {
-      width: 28px;
-      height: 28px;
-      background: var(--accent);
-      border-radius: 8px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
       flex-shrink: 0;
-      box-shadow: 0 2px 6px rgba(255, 0, 0, 0.3);
-    }
-
-    @media (prefers-color-scheme: dark) {
-      .logo {
-        box-shadow: 0 2px 8px rgba(255, 68, 68, 0.35);
-      }
-    }
-
-    .logo svg {
-      display: block;
+      border-radius: 6px;
     }
 
     .header-text h1 {
@@ -264,11 +247,7 @@
 <body>
 
   <header>
-    <div class="logo">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-        <path d="M13.5 3L5 13.5h6.5L10 21l9-10.5h-6.5L13.5 3z" fill="#fff"/>
-      </svg>
-    </div>
+    <img class="logo" src="icon.svg" width="28" height="28" alt="">
     <div class="header-text">
       <h1>Shorts Auto-Scroll</h1>
       <p>YouTube Shorts</p>
