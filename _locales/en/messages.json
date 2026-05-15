@@ -1,0 +1,11 @@
+{
+  "ext_name": { "message": "Shorts Control" },
+  "ext_description": { "message": "Automatically advances Shorts to the next video instead of looping" },
+  "ext_title": { "message": "Shorts Control" },
+  "toggle_label": { "message": "Auto-scroll" },
+  "toggle_hint": { "message": "Scroll shorts automatically" },
+  "speed_label": { "message": "Playback speed" },
+  "open_window": { "message": "Open in window" },
+  "footer_hint": { "message": "Enable on" },
+  "footer_link": { "message": "youtube.com/shorts" }
+}

@@ -1,3 +1,8 @@
+document.querySelectorAll('[data-i18n]').forEach((el) => {
+  const msg = chrome.i18n.getMessage(el.dataset.i18n);
+  if (msg) el.textContent = msg;
+});
+
 const STORAGE_KEY = 'shortsAutoScroll_enabled';
 const SPEED_KEY = 'shortsAutoScroll_speed';
 
@@ -46,4 +51,8 @@ openBtn.addEventListener('click', () => {
 chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
   const url = tabs[0]?.url || '';
   if (!url.match(/youtube\.com\/shorts\//)) openBtn.disabled = true;
+});
+
+document.getElementById('footerLink').addEventListener('click', () => {
+  chrome.tabs.create({ url: 'https://www.youtube.com/shorts' });
 });

@@ -1,0 +1,11 @@
+{
+  "ext_name": { "message": "Shorts Control" },
+  "ext_description": { "message": "Автоматически переключает Shorts на следующее видео вместо зацикливания" },
+  "ext_title": { "message": "Shorts Control" },
+  "toggle_label": { "message": "Авто-прокрутка" },
+  "toggle_hint": { "message": "Листать шортсы автоматически" },
+  "speed_label": { "message": "Скорость воспроизведения" },
+  "open_window": { "message": "Открыть в окне" },
+  "footer_hint": { "message": "Включите на" },
+  "footer_link": { "message": "youtube.com/shorts" }
+}
