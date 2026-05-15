@@ -1,0 +1,50 @@
+<svg width="128" height="128" viewBox="0 0 128 128" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">Auto Scroll Video Extension Icon</title>
+  <desc id="desc">Minimal dark rounded-square extension icon with a bright abstract S-shaped motion glyph.</desc>
+
+  <defs>
+    <linearGradient id="bg" x1="18" y1="10" x2="112" y2="124" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#222733"/>
+      <stop offset="1" stop-color="#07090F"/>
+    </linearGradient>
+
+    <linearGradient id="topRibbon" x1="36" y1="38" x2="92" y2="60" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#FF2448"/>
+      <stop offset="1" stop-color="#FF8A22"/>
+    </linearGradient>
+
+    <linearGradient id="bottomRibbon" x1="92" y1="70" x2="35" y2="98" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#FF2BAA"/>
+      <stop offset="1" stop-color="#6036FF"/>
+    </linearGradient>
+
+    <filter id="softShadow" x="-20%" y="-20%" width="140%" height="150%" color-interpolation-filters="sRGB">
+      <feDropShadow dx="0" dy="7" stdDeviation="5" flood-color="#000000" flood-opacity="0.35"/>
+    </filter>
+  </defs>
+
+  <rect x="8" y="8" width="112" height="112" rx="28" fill="url(#bg)"/>
+  <rect x="9" y="9" width="110" height="110" rx="27" stroke="#FFFFFF" stroke-opacity="0.06" stroke-width="2"/>
+
+  <g filter="url(#softShadow)">
+    <!-- Top stroke of the abstract S -->
+    <path
+      d="M43 43C43 34.716 49.716 28 58 28H86C94.284 28 101 34.716 101 43C101 51.284 94.284 58 86 58H58C49.716 58 43 51.284 43 43Z"
+      fill="url(#topRibbon)"
+      transform="rotate(-26 72 43)"
+    />
+
+    <!-- Bottom stroke of the abstract S -->
+    <path
+      d="M27 86C27 77.716 33.716 71 42 71H70C78.284 71 85 77.716 85 86C85 94.284 78.284 101 70 101H42C33.716 101 27 94.284 27 86Z"
+      fill="url(#bottomRibbon)"
+      transform="rotate(-26 56 86)"
+    />
+
+    <!-- Central cut / forward-motion notch. Dark fill avoids YouTube-style white play mark. -->
+    <path
+      d="M55 49C55 45.95 58.36 44.095 60.94 45.72L81.64 58.755C84.055 60.277 84.055 63.723 81.64 65.245L60.94 78.28C58.36 79.905 55 78.05 55 75V49Z"
+      fill="#0B0E16"
+    />
+  </g>
+</svg>
