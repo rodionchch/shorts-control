@@ -3,6 +3,7 @@ const SPEED_KEY = 'shortsAutoScroll_speed';
 
 const toggle = document.getElementById('toggle');
 const speedBtns = document.querySelectorAll('.speed-btn');
+const openBtn = document.getElementById('openWindow');
 
 chrome.storage.sync.get([STORAGE_KEY, SPEED_KEY], (result) => {
   toggle.checked = result[STORAGE_KEY] !== false;
@@ -26,3 +27,23 @@ function setActiveSpeed(speed) {
     btn.classList.toggle('active', parseFloat(btn.dataset.speed) === speed);
   });
 }
+
+openBtn.addEventListener('click', () => {
+  chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
+    const url = tabs[0]?.url || '';
+    const match = url.match(/youtube\.com\/shorts\/([^/?&]+)/);
+    if (!match) return;
+    const shortsUrl = `https://www.youtube.com/shorts/${match[1]}`;
+    chrome.windows.create({
+      url: shortsUrl,
+      type: 'popup',
+      width: 390,
+      height: 700,
+    });
+  });
+});
+
+chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
+  const url = tabs[0]?.url || '';
+  if (!url.match(/youtube\.com\/shorts\//)) openBtn.disabled = true;
+});

@@ -216,4 +216,29 @@
   window.addEventListener('yt-page-data-updated', onNavigate);
 
   findAndAttach();
+
+  // Минимальный UI когда шортс открыт в узком попап-окне
+  function injectPopupStyles() {
+    if (document.getElementById('__yt-popup-styles')) return;
+    const style = document.createElement('style');
+    style.id = '__yt-popup-styles';
+    style.textContent = `
+      ytd-masthead, #masthead-container { display: none !important; }
+      #navigation-button-up, #navigation-button-down { display: none !important; }
+      .action-container, ytd-shorts-player-controls { display: none !important; }
+      ytd-shorts { --ytd-app-gutter-size: 0px !important; }
+      ytd-page-manager { padding-top: 0 !important; }
+    `;
+    (document.head || document.documentElement).appendChild(style);
+  }
+
+  function checkPopupMode() {
+    if (window.outerWidth < 600 && isOnShorts()) injectPopupStyles();
+  }
+
+  window.addEventListener('resize', checkPopupMode);
+  window.addEventListener('yt-navigate-finish', () => {
+    if (window.outerWidth < 600 && isOnShorts()) injectPopupStyles();
+  });
+  setTimeout(checkPopupMode, 500);
 })();
