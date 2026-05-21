@@ -197,6 +197,42 @@
       font-weight: 600;
     }
 
+    /* Controls grid */
+    .controls-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 5px;
+    }
+
+    .ctrl-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 9px 0;
+      border: 1.5px solid var(--border);
+      border-radius: 8px;
+      background: var(--surface);
+      color: var(--text-secondary);
+      cursor: pointer;
+      transition: border-color 0.15s, background 0.15s, color 0.15s;
+      box-shadow: var(--shadow-btn);
+    }
+
+    .ctrl-btn:hover:not(:disabled) {
+      border-color: var(--accent);
+      color: var(--accent);
+      background: var(--accent-subtle);
+    }
+
+    .ctrl-btn:active:not(:disabled) {
+      opacity: 0.7;
+    }
+
+    .ctrl-btn:disabled {
+      opacity: 0.35;
+      cursor: default;
+    }
+
     /* Open in window button */
     .open-btn {
       display: flex;
@@ -282,6 +318,25 @@
     <button class="speed-btn active" data-speed="1">×1</button>
     <button class="speed-btn" data-speed="1.5">×1.5</button>
     <button class="speed-btn" data-speed="2">×2</button>
+  </div>
+
+  <div class="section-label" data-i18n="controls_label">Управление</div>
+  <div class="controls-grid" style="grid-template-columns: repeat(3, 1fr);">
+    <button class="ctrl-btn" id="ctrlPrev" title="Предыдущий">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M6 6h2v12H6zm3.5 6 8.5 6V6z"/>
+      </svg>
+    </button>
+    <button class="ctrl-btn" id="ctrlPlayPause" title="Воспроизвести / Пауза">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M8 5v14l11-7z"/>
+      </svg>
+    </button>
+    <button class="ctrl-btn" id="ctrlNext" title="Следующий">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M6 18l8.5-6L6 6v12zM14.5 6v12h2V6h-2z"/>
+      </svg>
+    </button>
   </div>
 
   <button class="open-btn" id="openWindow">

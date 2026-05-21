@@ -44,8 +44,29 @@
     );
   }
 
-  function goToNext() {
-    if (!isEnabled() || navigating || !isOnShorts()) return;
+  function findPrevButton() {
+    return (
+      document.querySelector('#navigation-button-up button') ||
+      document.querySelector('ytd-shorts #navigation-button-up button')
+    );
+  }
+
+  function goToPrev() {
+    if (navigating || !isOnShorts()) return;
+    navigating = true;
+    const btn = findPrevButton();
+    if (btn) {
+      btn.click();
+    } else {
+      document.dispatchEvent(new KeyboardEvent('keydown', {
+        key: 'ArrowUp', keyCode: 38, bubbles: true, cancelable: true,
+      }));
+    }
+    setTimeout(() => { navigating = false; }, 2000);
+  }
+
+  function goToNext(force = false) {
+    if ((!force && !isEnabled()) || navigating || !isOnShorts()) return;
     navigating = true;
     clearTimeout(navTimer);
 
@@ -198,10 +219,27 @@
 
   domObserver.observe(document.documentElement, { childList: true, subtree: true });
 
-  // Реагируем на смену скорости из попапа (content.js шлёт CustomEvent)
   window.addEventListener('shortsSpeedChanged', () => {
     applySpeed();
     scheduleEndTimer();
+  });
+
+  window.addEventListener('shortsControl', (e) => {
+    const cmd = e.detail?.command;
+    if (cmd === 'playpause') {
+      const v = video || findActiveVideo();
+      if (v && video !== v) attachVideo(v);
+      if (v) {
+        v.click();
+        setTimeout(() => { if (!v.paused) scheduleEndTimer(); }, 50);
+      }
+    } else if (cmd === 'next') {
+      navigating = false;
+      goToNext(true);
+    } else if (cmd === 'prev') {
+      navigating = false;
+      goToPrev();
+    }
   });
 
   // YouTube генерирует оба события при SPA-навигации
