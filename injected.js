@@ -266,6 +266,7 @@
       .action-container, ytd-shorts-player-controls { display: none !important; }
       ytd-shorts { --ytd-app-gutter-size: 0px !important; }
       ytd-page-manager { padding-top: 0 !important; }
+      tp-yt-app-drawer, #guide, ytd-mini-guide-renderer, #mini-guide { display: none !important; }
     `;
     (document.head || document.documentElement).appendChild(style);
   }
